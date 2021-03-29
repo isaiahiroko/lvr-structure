@@ -1,16 +1,16 @@
-# Lvr Struture
+# Laravel Package Struture
 
 ## Introduction
-A simple, opinionated structure for scaffolding laravel packages
+Another simple, opinionated structure for scaffolding laravel packages
 
 ## Setup
 
-1. Install fresh laravel or use and old app
+1. Install fresh laravel or use an old app
 ```bash
 $ laravel new my-app
 ```
 
-2. Clone this repo
+2. Clone this repo into you application `packages` directory
 ```bash
 $ cd ./my-app
 $ mkdir packages
@@ -21,18 +21,18 @@ $ git clone https://github.com/isaiahiroko/lvr-stucture [my-package-name]
 3. Update `./my-app/packages/[my-package-name]/composer.json` to suite your need, especially the following segment.
 ```json
 {
-    "name": "isaiahiroko/lvr-structure", // Your package would be installed using: composer require isaiahiroko/lvr-structure
+    "name": "[username]/[my-package-name]",
     "version": "0.0.0-dev",
     ...
     "autoload": {
         "psr-4": {
-            "Isaiahiroko\\Structure\\": "src" // This configures the namespace to your package as: Isaiahiroko/Structure/...
+            "[Username]\\[PackageName]\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Isaiahiroko\\Structure\\ServiceProvider" // Autoload service provider, remove if you choose not to autoload service provider
+                "[Username]\\[PackageName]\\ServiceProvider"
             ]
         }
     }
@@ -40,7 +40,7 @@ $ git clone https://github.com/isaiahiroko/lvr-stucture [my-package-name]
 }
 ```
 
-4. Update ./my-app/composer.json with local repository path. This force composer to install your package from your computer and not the packagist server
+4. Update `./my-app/composer.json` with local repository path. This force composer to install your package from your computer and not packagist server
 ```json
     ...
     "repositories": [
@@ -57,68 +57,18 @@ $ git clone https://github.com/isaiahiroko/lvr-stucture [my-package-name]
 
 4. Install the package to make it available to your app
 ```bash
-$ composer require isaiahiroko/lvr-structure
+$ composer require [username]/lvr-structure
 ```
 
 5. You can create you services in the package and use them in your app just like any other composer library
 
-## Installation (Manual)
-```
-// Create a new laravel project
-$ laravel new [packageName]
+## Publish
+1. Create a git repo for your package
+2. Initialise git at the root of your package `./my-app/packages/[my-package-name]`
+3. Commit and push your package to the new git repo
+4. Register at https://packagist.org and submit your package repo url
+5. You can now `composer require [username]/lvr-structure` from any app
 
-// Move to app directory
-$ cd ./[packageName]
+## License
 
-// Create package directory
-$ mkdir [username] // usualy github user name
-
-// Move to package user directory
-$ cd [username]
-
-$ git clone https://github.com/Isaiahiroko/lvr-structure [packageName]
-```
-
-## Setup
-Update package composer.json 
-```
-// update the official package name
-"name": "[username]/[packageName]",
-```
-
-Update root composer.json 
-```
-// so that the package is autoloaded when you need to test
-"psr-4": {
-    "App\\": "app/",
-    "[Username]\\[PackageName]\\": "packages/[username]/[packageName]/src/"
-},
-```
-
-## Customize
-Run a search and replace in the package directory for the following:
-
-```
-isaiahiroko => [username]
-Isaiahiroko => [Username]
-structure => [packageName]
-Structure => [PackageName]
-```
-
-Rename files:
-```
-- Controllers\Api\Struture => 
-- Controllers\Web\Struture => 
-- Controllers\Api\Struture
-```
-
-## Available commands
-```
-// Publish assets
-$ php artisan vendor:publish --tag=[Username]\[PackageName]\[PackageName]ServiceProvider  
-
-// Or Init Package
-$ php artisan [packageName]:install
-```
-
-## [License](./LICENSE.md)
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
