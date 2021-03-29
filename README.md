@@ -19,7 +19,7 @@ $ git clone https://github.com/isaiahiroko/lvr-stucture [my-package-name]
 ```
 
 3. Update `./my-app/packages/[my-package-name]/composer.json` to suite your need, especially the following segment.
-```json
+```
 {
     "name": "[username]/[my-package-name]",
     "version": "0.0.0-dev",
@@ -41,7 +41,7 @@ $ git clone https://github.com/isaiahiroko/lvr-stucture [my-package-name]
 ```
 
 4. Update `./my-app/composer.json` with local repository path. This force composer to install your package from your computer and not packagist server
-```json
+```
     ...
     "repositories": [
         {
