@@ -1,0 +1,30 @@
+{
+    "name": "isaiahiroko/lvr-structure",
+    "version": "0.0.0",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Isaiahiroko",
+            "email": "isaiahiroko@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/support": "8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Isaiahiroko\\Structure\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Isaiahiroko\\Structure\\ServiceProvider"
+            ]
+        }
+    }
+}
